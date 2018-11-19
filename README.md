@@ -13,3 +13,5 @@ The doodle can see in 5 directions. In each of these directions the snake looks 
 
 ![doodlejump-1](https://user-images.githubusercontent.com/36581610/48689164-32d1cf00-eb97-11e8-90c4-78a15ed9dace.gif)
 
+![doodlejump-2](https://user-images.githubusercontent.com/36581610/48689699-a8d73580-eb99-11e8-9deb-b2f370ca1026.gif)
+
