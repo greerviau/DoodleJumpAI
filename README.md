@@ -7,7 +7,7 @@ To run the program you will need [Processing](https://processing.org/)
 ### Neural Network
 Each doodle contains a neural network. The neural network has an input layer of 5 neurons, 2 hidden layers of 16 neurons, and one output layer of 2 neurons. 
 ### Vision
-The doodle can see in 5 directions. In each of these directions the snake looks to see the distance to a pad, if there is one in that direction.
+The doodle can see in 5 directions. In each of these directions the doodle can see the distance to a pad, if there is one in that direction.
 
 ![doodlevision](https://user-images.githubusercontent.com/36581610/48689204-5c8af600-eb97-11e8-8deb-e0391667e4d7.PNG)
 
