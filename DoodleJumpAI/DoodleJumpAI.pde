@@ -3,7 +3,7 @@ Doodle player;
 Population pop;
 
 float acc = 0.3;
-float mutationRate = 0.01;
+float mutationRate = 0.01; 
 
 boolean humanPlaying = false;
 boolean replayBest = true;
@@ -23,6 +23,9 @@ void draw() {
    if(humanPlaying) {
      player.move();
      player.show();
+     if(player.dead) {
+        player = new Doodle(); 
+     }
      fill(0);
      textAlign(CORNER,TOP);
      textSize(30);

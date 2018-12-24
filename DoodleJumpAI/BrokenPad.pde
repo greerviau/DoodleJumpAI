@@ -1,43 +1,39 @@
-class Pad {
-   PVector pos;
-   
-   float w, h;
+class BrokenPad extends Pad {
   
-   Pad(float x, float y) {
-     pos = new PVector(x, y);
-     w = 80;
-     h = 20;
+   boolean active = true;
+   
+   BrokenPad(float x, float y) {
+      super(x, y);
    }
    
    void show() {
-      fill(74,181,78);
+     if(active) {
+      fill(255,51,51);
       stroke(0);
       rectMode(CENTER);
       rect(pos.x, pos.y, w, h, 6);
+     }
    }
-   
-   void move(float yspeed) {
-     pos.y+=yspeed;
-   }
-   
-   void movex() {}
    
    boolean checkCollisionBounce(float x, float y) {
       if(x >= pos.x-w/2 && x <= pos.x+w/2 && y >= pos.y-h/2 && y <= pos.y+h/2) {
-         return true; 
+         if(active) {
+           active = false;
+           return true;
+         }
       }
       return false;
    }
    
    boolean checkCollision(float x, float y) {
-      if(x >= pos.x-w/2 && x <= pos.x+w/2 && y >= pos.y-h/2 && y <= pos.y+h/2) {
+      if(x >= pos.x-w/2 && x <= pos.x+w/2 && y >= pos.y-h/2 && y <= pos.y+h/2 && active) {
          return true; 
       }
       return false;
    }
    
    Pad clone() {
-      Pad clone = new Pad(pos.x,pos.y);
+      Pad clone = new BrokenPad(pos.x,pos.y);
       return clone;
    }
 }

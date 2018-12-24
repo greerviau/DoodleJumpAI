@@ -61,4 +61,87 @@ class Brain {
       clone.o_h_weights = o_h_weights;
       return clone;
    }
+   
+   void show(float x, float y, float w, float h, float[] vision, float[] decision) {
+     float space = 5;
+     float nSize = (h - (space*(iNodes-2))) / iNodes;
+     float nSpace = (w - (4*nSize)) / 3;
+     float hBuff = (h - (space*(hNodes-1)) - (nSize*hNodes))/2;
+     float oBuff = (h - (space*(oNodes-1)) - (nSize*oNodes))/2;
+     
+     int maxIndex = 0;
+     for(int i = 1; i < decision.length; i++) {
+        if(decision[i] > decision[maxIndex]) {
+           maxIndex = i; 
+        }
+     }
+     
+     //DRAW NODES
+     for(int i = 0; i < iNodes; i++) {  //DRAW INPUTS
+         if(vision[i] != 0) {
+           fill(0,255,0);
+         } else {
+           fill(255); 
+         }
+         stroke(0);
+         ellipseMode(CORNER);
+         ellipse(x,y+(i*(nSize+space)),nSize,nSize);
+     }
+     for(int i = 0; i < hNodes; i++) {  //DRAW HIDDEN
+         fill(255);
+         stroke(0);
+         ellipseMode(CORNER);
+         ellipse(x+nSize+nSpace,y+hBuff+(i*(nSize+space)),nSize,nSize);
+         ellipse(x+(2*nSpace)+(2*nSize),y+hBuff+(i*(nSize+space)),nSize,nSize);
+     }
+     for(int i = 0; i < oNodes; i++) {  //DRAW OUTPUTS
+         if(i == maxIndex) {
+           fill(0,255,0);
+         } else {
+           fill(255); 
+         }
+         stroke(0);
+         ellipseMode(CORNER);
+         ellipse(x+(3*nSpace)+(3*nSize),y+oBuff+(i*(nSize+space)),nSize,nSize);
+     }
+     
+     //DRAW WEIGHTS
+     for(int i = 0; i < h_i_weights.rows; i++) {  //INPUT TO HIDDEN
+        for(int j = 0; j < h_i_weights.cols-1; j++) {
+            if(h_i_weights.matrix[i][j] < 0) {
+               stroke(255,0,0); 
+            } else {
+               stroke(0,0,255); 
+            }
+            line(x+nSize,y+(nSize/2)+(j*(space+nSize)),x+nSize+nSpace,y+hBuff+(nSize/2)+(i*(space+nSize)));
+        }
+     }
+     
+     for(int i = 0; i < h_h_weights.rows; i++) {  //HIDDEN TO HIDDEN
+        for(int j = 0; j < h_h_weights.cols-1; j++) {
+            if(h_h_weights.matrix[i][j] < 0) {
+               stroke(255,0,0); 
+            } else {
+               stroke(0,0,255); 
+            }
+            line(x+(2*nSize)+nSpace,y+hBuff+(nSize/2)+(j*(space+nSize)),x+(2*nSize)+(2*nSpace),y+hBuff+(nSize/2)+(i*(space+nSize)));
+        }
+     }
+     
+     for(int i = 0; i < o_h_weights.rows; i++) {  //HIDDEN TO OUTPUT
+        for(int j = 0; j < o_h_weights.cols-1; j++) {
+            if(o_h_weights.matrix[i][j] < 0) {
+               stroke(255,0,0); 
+            } else {
+               stroke(0,0,255); 
+            }
+            line(x+(3*nSize)+(2*nSpace),y+hBuff+(nSize/2)+(j*(space+nSize)),x+(3*nSize)+(3*nSpace),y+oBuff+(nSize/2)+(i*(space+nSize)));
+        }
+     }
+     fill(0);
+     textSize(15);
+     textAlign(LEFT,CENTER);
+     text("LEFT",x+(4*nSize)+(3*nSpace)+5,y+oBuff+(nSize/2));
+     text("RIGHT",x+(4*nSize)+(3*nSpace)+5,y+oBuff+space+nSize+(nSize/2));
+  }
 }
