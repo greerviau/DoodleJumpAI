@@ -11,7 +11,6 @@ The doodle can see in 5 directions. In each of these directions the doodle can s
 
 ![doodlevision](https://user-images.githubusercontent.com/36581610/48689204-5c8af600-eb97-11e8-8deb-e0391667e4d7.PNG)
 
-![doodlejump-1](https://user-images.githubusercontent.com/36581610/48689164-32d1cf00-eb97-11e8-90c4-78a15ed9dace.gif)
+![doodlejump-1](https://user-images.githubusercontent.com/36581610/50392983-e7c05400-0720-11e9-8c97-523f1e3687b7.gif)
 
-![doodlejump-2](https://user-images.githubusercontent.com/36581610/48689699-a8d73580-eb99-11e8-9deb-b2f370ca1026.gif)
-
+![doodlejump-2](https://user-images.githubusercontent.com/36581610/50393244-c496a400-0722-11e9-9ee5-375d67511df3.gif)
