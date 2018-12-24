@@ -6,6 +6,8 @@ To run the program you will need [Processing](https://processing.org/)
 ## Doodle
 ### Neural Network
 Each doodle contains a neural network. The neural network has an input layer of 5 neurons, 2 hidden layers of 4 neurons, and one output layer of 2 neurons. 
+### Genetic Algorithm
+A population of 200 doodles is created, each doodle with its own neural network. After all the doodles die some of the highest scoring ones are chosen to reproduce and create a new population of 200 doodles. This process is repeated for every generation.
 ### Vision
 The doodle can see in 5 directions. In each of these directions the doodle can see the distance to a pad, if there is one in that direction.
 
