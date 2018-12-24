@@ -9,7 +9,7 @@ boolean humanPlaying = false;
 boolean replayBest = true;
 
 void setup() {
-  frameRate(60);
+  frameRate(120);
   size(600,1000);
   if(humanPlaying) {
     player = new Doodle();

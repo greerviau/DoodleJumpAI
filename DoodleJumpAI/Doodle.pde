@@ -111,29 +111,27 @@ class Doodle {
     for(int i=0; i<pads.size(); i++) {
        pads.get(i).move(yspeed);
     }
-     for(int i=0; i<pads.size(); i++) {
-        if(pads.get(i).pos.y > height) {
-           float pady = pads.get(i).pos.y;
-           pads.remove(i);
-           if(pads.size() < padCount) {
-             if(replay) {
-                  pads.add(padPos.get(padItter).clone());
-                  padItter += 1;
+    if(pads.get(0).pos.y > height) {
+       float pady = pads.get(0).pos.y;
+       pads.remove(0);
+       if(pads.size() < padCount) {
+         if(replay) {
+              pads.add(padPos.get(padItter).clone());
+              padItter += 1;
+         } else {
+             int choice = floor(random(0,10));
+             Pad newPad;
+             if(choice == 1) {
+               newPad = new  MovingPad(random(40,width-40), pads.get(pads.size()-1).pos.y-padspacing); 
+             } else if(choice == 2) {
+               newPad = new BrokenPad(random(40,width-40), pads.get(pads.size()-1).pos.y-padspacing);
              } else {
-                 int choice = floor(random(0,10));
-                 Pad newPad;
-                 if(choice == 1) {
-                   newPad = new  MovingPad(random(40,width-40), pady-height); 
-                 } else if(choice == 2) {
-                   newPad = new BrokenPad(random(40,width-40), pady-height);
-                 } else {
-                   newPad = new Pad(random(40,width-40), pady-height);
-                 }
-                 pads.add(newPad);
-                 padPos.add(newPad.clone());
+               newPad = new Pad(random(40,width-40), pads.get(pads.size()-1).pos.y-padspacing);
              }
-           }
-        }
+             pads.add(newPad);
+             padPos.add(newPad.clone());
+         }
+       }
      } 
      score+=1;
      if(score % 1000 == 0 && padCount > 5) {
