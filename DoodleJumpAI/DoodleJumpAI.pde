@@ -8,6 +8,8 @@ float mutationRate = 0.01;
 boolean humanPlaying = false;
 boolean replayBest = true;
 
+int highscore = 0;
+
 void setup() {
   frameRate(120);
   size(600,1000);
@@ -24,14 +26,17 @@ void draw() {
      player.move();
      player.show();
      if(player.dead) {
+        highscore = player.score;
         player = new Doodle(); 
      }
      fill(0);
      textAlign(CORNER,TOP);
      textSize(30);
      text("Score : "+player.score, 10, 10);
+     text("Highscore : "+highscore, 10, 10);
    } else {
       if(pop.done()) {
+         highscore = pop.bestDoodle.score;
          pop.calculateFitness();
          pop.naturalSelection();
       } else {
@@ -41,6 +46,8 @@ void draw() {
       fill(0);
       textAlign(CORNER,TOP);
       textSize(30);
+      text("Score : "+pop.bestDoodle.score, 10, 10);
+      text("Highscore : "+highscore, 10, 50);
       text("Gen : "+pop.gen, 450, 10);
    }
    

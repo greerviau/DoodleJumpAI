@@ -23,10 +23,6 @@ class Population {
      } else {
         bestDoodle.show(); 
         bestDoodle.brain.show(10,height-160,200,150,bestDoodle.vision,bestDoodle.decision);
-        fill(0);
-        textAlign(CORNER,TOP);
-        textSize(30);
-        text("Score : "+bestDoodle.score, 10, 10);
      }
    }
    
