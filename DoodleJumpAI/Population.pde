@@ -3,7 +3,7 @@ class Population {
    
    Doodle bestDoodle;
   
-   int gen = 1;
+   int gen = 0;
    float fitnessSum;
    float bestFitness = 0;
   

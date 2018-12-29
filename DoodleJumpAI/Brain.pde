@@ -142,6 +142,7 @@ class Brain {
      textSize(15);
      textAlign(LEFT,CENTER);
      text("LEFT",x+(4*nSize)+(3*nSpace)+5,y+oBuff+(nSize/2));
-     text("RIGHT",x+(4*nSize)+(3*nSpace)+5,y+oBuff+space+nSize+(nSize/2));
+     text("STILL",x+(4*nSize)+(3*nSpace)+5,y+oBuff+space+nSize+(nSize/2));
+     text("RIGHT",x+(4*nSize)+(3*nSpace)+5,y+oBuff+(2*space)+(2*nSize)+(nSize/2));
   }
 }

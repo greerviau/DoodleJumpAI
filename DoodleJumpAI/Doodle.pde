@@ -27,7 +27,7 @@ class Doodle {
    
   Doodle() {
     lifetime = 1000;
-    brain = new Brain(5,4,2);
+    brain = new Brain(5,4,3);
     pads = new ArrayList<Pad>();
     padPos = new ArrayList<Pad>();
     padspacing = height/padCount;
@@ -47,7 +47,7 @@ class Doodle {
   Doodle(ArrayList<Pad> padPositions) {
     replay = true;
     lifetime = 1000;
-    brain = new Brain(5,4,2);
+    brain = new Brain(5,4,3);
     pads = new ArrayList<Pad>();
     padPos = padPositions;
     for(int i=1; i<=10; i++) {
@@ -210,6 +210,9 @@ class Doodle {
            movement = -10;
            break;
          case 1:
+           movement = 0;
+           break;
+         case 2:
            movement = 10;
            break;
       }
