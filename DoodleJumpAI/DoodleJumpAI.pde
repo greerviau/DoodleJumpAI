@@ -2,6 +2,9 @@ Doodle player;
 
 Population pop;
 
+final int hidden_layers = 2;
+final int hidden_nodes = 4;
+
 float acc = 0.3;
 float mutationRate = 0.01; 
 

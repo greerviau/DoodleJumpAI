@@ -4,6 +4,7 @@ class Population {
    Doodle bestDoodle;
   
    int gen = 0;
+   
    float fitnessSum;
    float bestFitness = 0;
   
@@ -73,7 +74,7 @@ class Population {
         bestFitness = best;
         bestDoodle = doodles[bestIndex].cloneReplay();
         bestDoodle.replay = true;
-        println("Gen "+gen+" Best Score "+bestFitness);
+        println("Gen "+gen+" Best Fitness "+bestFitness);
       } else {
         bestDoodle = bestDoodle.cloneReplay(); 
       }

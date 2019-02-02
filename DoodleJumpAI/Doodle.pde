@@ -1,6 +1,6 @@
 class Doodle {
   
-  Brain brain;
+  NeuralNet brain;
   
   ArrayList<Pad> pads;
   ArrayList<Pad> padPos;
@@ -11,12 +11,12 @@ class Doodle {
   float lifetime;
   float movement = 0;
   float padspacing;
-  int padCount = 10;
   float w, h;
   float fitness;
   float yspeed;
   
   int score = 0;
+  int padCount = 10;
   int padItter = 0;
   
   boolean dead = false;
@@ -27,7 +27,7 @@ class Doodle {
    
   Doodle() {
     lifetime = 1000;
-    brain = new Brain(5,4,3);
+    brain = new NeuralNet(5,hidden_nodes,3,hidden_layers);
     pads = new ArrayList<Pad>();
     padPos = new ArrayList<Pad>();
     padspacing = height/padCount;
@@ -47,7 +47,7 @@ class Doodle {
   Doodle(ArrayList<Pad> padPositions) {
     replay = true;
     lifetime = 1000;
-    brain = new Brain(5,4,3);
+    brain = new NeuralNet(5,hidden_nodes,3,hidden_layers);
     pads = new ArrayList<Pad>();
     padPos = padPositions;
     for(int i=1; i<=10; i++) {
@@ -219,7 +219,7 @@ class Doodle {
   }
   
   float calculateFitness() {
-     fitness = score; 
+     fitness = score;
      return fitness;
   }
   
