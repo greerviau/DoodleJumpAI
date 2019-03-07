@@ -14,6 +14,7 @@ class Doodle {
   float w, h;
   float fitness;
   float yspeed;
+  float xacc;
   
   int score = 0;
   int padCount = 10;
@@ -41,7 +42,8 @@ class Doodle {
     w = 80;
     h = 80;
     fitness = 0;
-    yspeed = -acc;
+    yspeed = -gravity;
+    xacc = 0;
   }
   
   Doodle(ArrayList<Pad> padPositions) {
@@ -60,7 +62,8 @@ class Doodle {
     w = 80;
     h = 80;
     fitness = 0;
-    yspeed = -acc;
+    yspeed = -gravity;
+    xacc = 0;
   }
   
   void show() {
@@ -75,6 +78,28 @@ class Doodle {
      pos.y -= yspeed; 
   }
   
+  void moveLeft() {
+    if(xacc > 0) {
+      moveStop();
+    }
+    if(xacc > -10) {
+      xacc -= 0.5;
+    }
+  }
+  
+  void moveRight() {
+    if(xacc < 0) {
+      moveStop();
+    }
+    if(xacc < 10) {
+      xacc += 0.5;
+    }
+  }
+  
+  void moveStop() {
+     xacc = 0; 
+  }
+  
   void move() {
     if(!dead) {
       if(yspeed > 0) {
@@ -87,9 +112,9 @@ class Doodle {
       if(yspeed < 0) {
          moveDown();
       }
-      yspeed -= acc;
-     
-      pos.x += movement;
+      yspeed -= gravity;
+      pos.x += xacc;
+      //println(xacc);
       if(pos.x < 0) {
          pos.x = width; 
       } else if(pos.x > width) {
@@ -207,13 +232,13 @@ class Doodle {
       
       switch(maxIndex) {
          case 0:
-           movement = -10;
+           moveLeft();
            break;
          case 1:
-           movement = 0;
+           moveStop();
            break;
          case 2:
-           movement = 10;
+           moveRight();
            break;
       }
   }

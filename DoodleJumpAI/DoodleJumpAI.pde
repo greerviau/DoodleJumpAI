@@ -1,17 +1,15 @@
+final int hidden_layers = 2;
+final int hidden_nodes = 5;
+final float gravity = 0.3;
+final float mutationRate = 0.01; 
+final boolean humanPlaying = false;
+final boolean replayBest = true;
+
+int highscore = 0;
+
 Doodle player;
 
 Population pop;
-
-final int hidden_layers = 2;
-final int hidden_nodes = 4;
-
-float acc = 0.3;
-float mutationRate = 0.01; 
-
-boolean humanPlaying = false;
-boolean replayBest = true;
-
-int highscore = 0;
 
 void setup() {
   frameRate(120);
@@ -26,6 +24,14 @@ void setup() {
 void draw() {
    background(200);
    if(humanPlaying) {
+     if(keyPressed) {
+        if(key == 'a') {
+          player.moveLeft();
+        }
+        if(key == 'd') {
+          player.moveRight();
+        } 
+     }
      player.move();
      player.show();
      if(player.dead) {
@@ -36,7 +42,7 @@ void draw() {
      textAlign(CORNER,TOP);
      textSize(30);
      text("Score : "+player.score, 10, 10);
-     text("Highscore : "+highscore, 10, 10);
+     text("Highscore : "+highscore, 10, 50);
    } else {
       if(pop.done()) {
          highscore = pop.bestDoodle.score;
@@ -53,31 +59,10 @@ void draw() {
       text("Highscore : "+highscore, 10, 50);
       text("Gen : "+pop.gen, 450, 10);
    }
-   
-}
-
-void keyPressed() {
-  if(humanPlaying) {
-    if(key == CODED) {
-       if(keyCode == LEFT) {
-          player.movement = -10;
-       }
-       if(keyCode == RIGHT) {
-          player.movement = 10; 
-       }
-    }
-  }
 }
 
 void keyReleased() {
-  if(humanPlaying) {
-    if(key == CODED) {
-       if(keyCode == LEFT && player.movement == -10) {
-          player.movement = 0;
-       }
-       if(keyCode == RIGHT && player.movement == 10) {
-          player.movement = 0; 
-       }
-    }
-  }
+   if(key == 'a' || key == 'd') {
+    player.moveStop();
+  } 
 }
